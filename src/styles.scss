@@ -1,0 +1,28 @@
+/* Styles scoped with rc- prefix to avoid leaking */
+
+.rc-chat-window {
+  padding: 1rem;
+  background-color: #f3f4f6;
+  border-radius: 0.5rem;
+}
+.rc-chat-window > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 0.5rem;
+}
+
+.rc-chat-message {
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+}
+
+.rc-chat-message.rc-role-user {
+  background-color: #dbeafe;
+  color: #1e3a8a;
+  align-self: flex-end;
+}
+
+.rc-chat-message.rc-role-assistant {
+  background-color: #d1fae5;
+  color: #064e3b;
+  align-self: flex-start;
+}
+
