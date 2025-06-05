@@ -1,6 +1,7 @@
 # React Chat UI Library
 
 This library provides a lightweight and fully customizable chat user interface for React applications.
+Styles are built with Sass and include a prefixed subset of TailwindCSS utilities so they won't interfere with host applications.
 
 ## Installation
 
@@ -13,7 +14,24 @@ npm install react-chat-ui
 ```jsx
 import { ChatWindow } from 'react-chat-ui';
 
-const messages = ['Hello', 'World'];
+const messages = [
+  {
+    id: '1',
+    type: 'message',
+    role: 'assistant',
+    content: [
+      { type: 'text', text: 'Hello', annotations: [] }
+    ]
+  },
+  {
+    id: '2',
+    type: 'message',
+    role: 'user',
+    content: [
+      { type: 'text', text: 'World', annotations: [] }
+    ]
+  }
+];
 
 function App() {
   return <ChatWindow messages={messages} />;
