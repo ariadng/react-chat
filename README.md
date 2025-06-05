@@ -53,6 +53,32 @@ npm run dev
 Running the command above starts a Vite dev server so you can interact with the
 components without installing the package from npm.
 
+## Roadmap / TODO Checklist
+
+- [ ] **Message Input Component (`ChatInput.jsx`):**
+  - [ ] Create a component for typing and sending messages.
+  - [ ] Implement `onSendMessage` callback in `ChatWindow`.
+- [ ] **Build & Packaging:**
+  - [ ] Add build script to `package.json` (e.g., Babel/Rollup) for `dist` output.
+  - [ ] Generate TypeScript declaration files (`.d.ts`).
+- [ ] **Styling & Customization:**
+  - [ ] Refine default styles for a modern look and feel.
+  - [ ] Document methods for style customization (CSS variables/overrides).
+- [ ] **Core `ChatWindow` Features:**
+  - [ ] Add `isLoading` prop for loading states.
+  - [ ] Add `placeholder` prop for the message input.
+  - [ ] Implement auto-scrolling to the latest message.
+- [ ] **Message Enhancements:**
+  - [ ] Add support for displaying message timestamps.
+- [ ] **Documentation:**
+  - [ ] Expand `README.md` with detailed API for all components/props.
+  - [ ] Add JSDoc comments to components.
+- [ ] **Examples:**
+  - [ ] Update `example/basic` to showcase new input component and features.
+- [ ] **Testing:**
+  - [ ] Add unit tests for `ChatInput.jsx`.
+  - [ ] Ensure existing tests cover new functionalities.
+
 ## Development
 
 Install dependencies and run the test suite:
