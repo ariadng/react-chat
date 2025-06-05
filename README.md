@@ -6,13 +6,13 @@ Styles are built with Sass and include a prefixed subset of TailwindCSS utilitie
 ## Installation
 
 ```bash
-npm install react-chat-ui
+npm install @ariadng/react-chat
 ```
 
 ## Usage
 
 ```jsx
-import { ChatWindow } from 'react-chat-ui';
+import { ChatWindow } from 'react-chat';
 
 const messages = [
   {
