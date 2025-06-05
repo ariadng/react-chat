@@ -55,9 +55,9 @@ components without installing the package from npm.
 
 ## Roadmap / TODO Checklist
 
-- [ ] **Message Input Component (`ChatInput.jsx`):**
-  - [ ] Create a component for typing and sending messages.
-  - [ ] Implement `onSendMessage` callback in `ChatWindow`.
+- ✅ **Message Input Component (`ChatInput.jsx`):**
+  - ✅ Create a component for typing and sending messages.
+  - ✅ Implement `onSendMessage` callback in `ChatWindow`.
 - [ ] **Build & Packaging:**
   - [ ] Add build script to `package.json` (e.g., Babel/Rollup) for `dist` output.
   - [ ] Generate TypeScript declaration files (`.d.ts`).

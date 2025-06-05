@@ -1,94 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { ChatWindow } from '../../../src';
+import { ChatWindow } from '../../../src'; // Adjust path if your project structure is different
 
-const messages = [
+const initialMessages = [
   {
     id: '1',
     type: 'message',
-    role: 'user',
+    role: 'assistant',
     content: [
-      { type: 'text', text: 'Hi there!', annotations: [] }
+      { type: 'text', text: 'Hello! This is a basic example of react-chat-ui.', annotations: [] }
     ]
   },
   {
     id: '2',
     type: 'message',
-    role: 'assistant',
+    role: 'user',
     content: [
-      { type: 'text', text: 'Hello! How can I help you today?', annotations: [] }
+      { type: 'text', text: 'Great! How does it look?', annotations: [] }
     ]
   },
   {
     id: '3',
     type: 'message',
-    role: 'user',
-    content: [
-      { type: 'text', text: 'Tell me a joke.', annotations: [] }
-    ]
-  },
-  {
-    id: '4',
-    type: 'message',
     role: 'assistant',
     content: [
-      {
-        type: 'text',
-        text: 'Why did the scarecrow win an award? Because he was outstanding in his field.',
-        annotations: []
-      }
+      { type: 'text', text: 'It uses SCSS for styling. Try sending a message!', annotations: [] }
     ]
   },
-  {
-    id: '5',
-    type: 'message',
-    role: 'user',
-    content: [
-      { type: 'text', text: "Haha, that's funny!", annotations: [] }
-    ]
-  },
-  {
-    id: '6',
-    type: 'message',
-    role: 'assistant',
-    content: [
-      { type: 'text', text: 'Glad you liked it. Need anything else?', annotations: [] }
-    ]
-  },
-  {
-    id: '7',
-    type: 'message',
-    role: 'user',
-    content: [
-      { type: 'text', text: 'No thanks, that was all.', annotations: [] }
-    ]
-  },
-  {
-    id: '8',
-    type: 'message',
-    role: 'assistant',
-    content: [
-      { type: 'text', text: 'You\'re welcome! Have a great day.', annotations: [] }
-    ]
-  },
-  {
-    id: '9',
-    type: 'message',
-    role: 'user',
-    content: [
-      { type: 'text', text: 'Bye!', annotations: [] }
-    ]
-  },
-  {
-    id: '10',
-    type: 'message',
-    role: 'assistant',
-    content: [
-      { type: 'text', text: 'Goodbye!', annotations: [] }
-    ]
-  }
 ];
 
+function App() {
+  const [messages, setMessages] = useState(initialMessages);
+
+  const handleSendMessage = (text) => {
+    const newUserMessage = {
+      id: String(Date.now()), // Using timestamp for a simple unique ID
+      type: 'message',
+      role: 'user',
+      content: [{ type: 'text', text, annotations: [] }],
+    };
+    setMessages((prevMessages) => [...prevMessages, newUserMessage]);
+
+    // Simulate assistant response
+    setTimeout(() => {
+      const assistantResponse = {
+        id: String(Date.now() + 1), // Ensure unique ID for assistant's reply
+        type: 'message',
+        role: 'assistant',
+        content: [{ type: 'text', text: `I received: "${text}"`, annotations: [] }],
+      };
+      setMessages((prevMessages) => [...prevMessages, assistantResponse]);
+    }, 1000);
+  };
+
+  return (
+    <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', padding: '20px', boxSizing: 'border-box' }}>
+      <h1>React Chat UI - Basic Example (with Input)</h1>
+      <div style={{ flexGrow: 1, border: '1px solid #ccc', borderRadius: '8px', overflow: 'hidden' }}>
+        <ChatWindow 
+          messages={messages} 
+          onSendMessage={handleSendMessage} 
+          inputPlaceholder="Type your message here..."
+        />
+      </div>
+    </div>
+  );
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <ChatWindow messages={messages} />
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );
