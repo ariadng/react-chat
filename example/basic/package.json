@@ -1,0 +1,14 @@
+{
+  "name": "react-chat-ui-example-basic",
+  "private": true,
+  "scripts": {
+    "dev": "vite"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "vite": "6.1.6"
+  }
+}
