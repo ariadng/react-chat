@@ -56,7 +56,7 @@ function App() {
   return (
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', padding: '20px', boxSizing: 'border-box' }}>
       <h1>React Chat UI - Basic Example (with Input)</h1>
-      <div style={{ flexGrow: 1, border: '1px solid #ccc', borderRadius: '8px', overflow: 'hidden' }}>
+      <div style={{ flexGrow: 1, border: '1px solid #ddd', borderRadius: '8px', overflow: 'hidden' }}>
         <ChatWindow 
           messages={messages} 
           onSendMessage={handleSendMessage} 

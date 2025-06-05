@@ -60,10 +60,10 @@ components without installing the package from npm.
   - ✅ Implement `onSendMessage` callback in `ChatWindow`.
 - ✅ **Build & Packaging:**
   - ✅ Add build script to `package.json` (e.g., Babel/Rollup) for `dist` output.
-  - [ ] Generate TypeScript declaration files (`.d.ts`).
-- [ ] **Styling & Customization:**
-  - [ ] Refine default styles for a modern look and feel.
-  - [ ] Document methods for style customization (CSS variables/overrides).
+  - ✅ Generate TypeScript declaration files (`.d.ts`).
+- ✅ **Styling & Customization:**
+  - ✅ Refine default styles for a modern look and feel.
+  - ✅ Document methods for style `customization (CSS variables/overrides).
 - [ ] **Core `ChatWindow` Features:**
   - [ ] Add `isLoading` prop for loading states.
   - [ ] Add `placeholder` prop for the message input.
@@ -78,6 +78,72 @@ components without installing the package from npm.
 - [ ] **Testing:**
   - [ ] Add unit tests for `ChatInput.jsx`.
   - [ ] Ensure existing tests cover new functionalities.
+
+## Styling & Customization
+
+There are two main ways to customize the appearance of the chat components:
+
+### 1. Overriding CSS Classes
+
+All CSS classes used by this library are prefixed with `rc-` (e.g., `.rc-chat-window-container`, `.rc-chat-message`, `.rc-chat-input`). You can target these classes in your own CSS files to override specific styles. Make sure your custom styles have enough specificity or are loaded after the library's styles.
+
+**Example:**
+
+```css
+/* Your custom CSS file */
+.rc-chat-message.rc-role-user {
+  background-color: #007bff; /* Change user message background to a different blue */
+  color: white;
+}
+```
+
+### 2. Using CSS Custom Properties (Variables)
+
+For more straightforward theming of common elements, the library exposes several CSS custom properties. You can redefine these variables in your own CSS, typically within a `:root` selector or a more specific parent container.
+
+**Available CSS Custom Properties:**
+
+*   `--rc-input-form-border-color`: Top border color of the input form area.
+*   `--rc-input-form-bg-color`: Background color of the input form area.
+*   `--rc-input-height`: Height of the text input field.
+*   `--rc-input-padding`: Padding of the text input field.
+*   `--rc-input-border-color`: Border color of the text input field.
+*   `--rc-input-border-radius`: Border radius of the text input field.
+*   `--rc-input-margin-right`: Right margin of the text input field.
+*   `--rc-input-font-size`: Font size for the text input field.
+*   `--rc-input-text-color`: Text color of the text input field.
+*   `--rc-input-bg-color`: Background color of the text input field.
+*   `--rc-input-placeholder-color`: Placeholder text color in the input field.
+*   `--rc-input-focus-border-color`: Border color of the input field when focused.
+*   `--rc-input-focus-shadow-color`: Box shadow color of the input field when focused.
+*   `--rc-send-button-height`: Height of the send button.
+*   `--rc-send-button-padding`: Padding of the send button.
+*   `--rc-send-button-bg-color`: Background color of the send button.
+*   `--rc-send-button-text-color`: Text color of the send button.
+*   `--rc-send-button-border-radius`: Border radius of the send button.
+*   `--rc-send-button-hover-bg-color`: Background color of the send button on hover.
+*   `--rc-messages-area-bg-color`: Background color of the messages area.
+*   `--rc-messages-gap`: Gap between messages in the messages area.
+*   `--rc-user-message-bg-color`: Background color for user messages.
+*   `--rc-user-message-text-color`: Text color for user messages.
+*   `--rc-assistant-message-bg-color`: Background color for assistant messages.
+*   `--rc-assistant-message-text-color`: Text color for assistant messages.
+
+**Example of overriding custom properties:**
+
+```css
+/* Your custom CSS file */
+:root { /* Or a more specific selector like .my-chat-app-container */
+  --rc-user-message-bg-color: #e0f7fa; /* Light cyan */
+  --rc-user-message-text-color: #00796b; /* Dark teal */
+  --rc-assistant-message-bg-color: #fce4ec; /* Light pink */
+  --rc-assistant-message-text-color: #c2185b; /* Dark pink */
+  --rc-send-button-bg-color: #4CAF50; /* Green */
+  --rc-send-button-hover-bg-color: #388E3C; /* Darker Green */
+}
+```
+
+By using these methods, you can adapt the `react-chat-ui` components to better fit the visual style of your application.
 
 ## Development
 

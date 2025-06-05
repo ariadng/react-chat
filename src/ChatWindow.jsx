@@ -1,6 +1,7 @@
 import React from 'react';
 import ChatMessage from './ChatMessage';
 import ChatInput from './ChatInput';
+import './reset.scss';
 import './styles.scss';
 
 export default function ChatWindow({ messages = [], onSendMessage, inputPlaceholder }) {

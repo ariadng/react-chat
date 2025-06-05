@@ -3,37 +3,52 @@
 .rc-chat-input-form {
   display: flex;
   padding: 0.5rem;
-  border-top: 1px solid #e5e7eb; /* Light gray border */
-  background-color: #ffffff; /* White background */
+  border-top: 1px solid var(--rc-input-form-border-color, #e5e7eb);
+  background-color: var(--rc-input-form-bg-color, #ffffff);
 }
 
 .rc-chat-input {
   flex-grow: 1;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #d1d5db; /* Gray border */
-  border-radius: 0.375rem; /* Rounded corners */
-  margin-right: 0.5rem;
-  font-size: 0.875rem; /* Smaller font */
+  height: var(--rc-input-height, 3rem);
+  padding: var(--rc-input-padding, 0.5rem 1rem);
+  border: 1px solid var(--rc-input-border-color, #d1d5db);
+  border-radius: var(--rc-input-border-radius, 1.5rem);
+  margin-right: var(--rc-input-margin-right, 0.5rem);
+  font-size: var(--rc-input-font-size, 1rem);
+  color: var(--rc-input-text-color, #1f2937);
+  background-color: var(--rc-input-bg-color, #ffffff);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.rc-chat-input::placeholder {
+  color: var(--rc-input-placeholder-color, #9ca3af);
 }
 
 .rc-chat-input:focus {
   outline: none;
-  border-color: #2563eb; /* Blue border on focus */
-  box-shadow: 0 0 0 0.125rem rgba(59, 130, 246, 0.25); /* Blue shadow on focus */
+  border-color: var(--rc-input-focus-border-color, #2563eb);
+  box-shadow: 0 0 0 0.2rem var(--rc-input-focus-shadow-color, rgba(59, 130, 246, 0.25));
 }
 
 .rc-chat-send-button {
-  padding: 0.5rem 1rem;
-  background-color: #2563eb; /* Blue background */
-  color: white;
+  height: var(--rc-send-button-height, 3rem);
+  padding: var(--rc-send-button-padding, 0.5rem 1.5rem);
+  background-color: var(--rc-send-button-bg-color, #0078FF);
+  color: var(--rc-send-button-text-color, white);
   border: none;
-  border-radius: 0.375rem;
+  border-radius: var(--rc-send-button-border-radius, 1.5rem);
   cursor: pointer;
   font-weight: 500;
+  transition: background-color 0.15s ease-in-out;
 }
 
 .rc-chat-send-button:hover {
-  background-color: #1d4ed8; /* Darker blue on hover */
+  background-color: var(--rc-send-button-hover-bg-color, #006de8);
+}
+
+.rc-chat-send-button:active {
+  opacity: 0.9;
+  transition-duration: 0s;
 }
 
 
@@ -41,8 +56,6 @@
   display: flex;
   flex-direction: column;
   height: 100%; /* Or a specific height, e.g., 400px */
-  border: 1px solid #e5e7eb; /* Consistent border */
-  border-radius: 0.5rem;
   overflow: hidden; /* Prevents content from spilling out */
 }
 
@@ -50,27 +63,30 @@
   flex-grow: 1;
   overflow-y: auto; /* Allows scrolling for messages */
   padding: 1rem;
-  background-color: #f3f4f6;
-}
-
-.rc-chat-messages-area > :not([hidden]) ~ :not([hidden]) {
-  margin-top: 0.5rem;
+  background-color: var(--rc-messages-area-bg-color, #f7f7f7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--rc-messages-gap, 1rem);
 }
 
 .rc-chat-message {
-  padding: 0.5rem;
-  border-radius: 0.375rem;
+  padding: 0.75rem 1rem; /* Increased padding for better spacing */
+  border-radius: 0.75rem; /* Softer, more rounded corners */
+  max-width: 80%; /* Prevent messages from taking full width */
+  word-wrap: break-word; /* Ensure long words break */
 }
 
 .rc-chat-message.rc-role-user {
-  background-color: #dbeafe;
-  color: #1e3a8a;
+  background-color: var(--rc-user-message-bg-color, #0078FF);
+  color: var(--rc-user-message-text-color, #ffffff);
   align-self: flex-end;
+  margin-left: auto; /* Ensures it aligns to the right within the flex container */
 }
 
 .rc-chat-message.rc-role-assistant {
-  background-color: #d1fae5;
-  color: #064e3b;
+  background-color: var(--rc-assistant-message-bg-color, #E9E9EB);
+  color: var(--rc-assistant-message-text-color, #272727);
   align-self: flex-start;
+  margin-right: auto; /* Ensures it aligns to the left */
 }
 
