@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { ChatWindow } from '../../src';
+import { ChatWindow } from '../../../src';
 
 const messages = ['Hello', 'world!'];
 
