@@ -36,6 +36,34 @@ const messages = [
 function App() {
   return <ChatWindow messages={messages} />;
 }
+```
+
+## Component API
+
+This section details the props accepted by the main components of the `react-chat-ui` library.
+
+### `ChatWindow`
+
+The `ChatWindow` component is the main container for displaying messages and the chat input field.
+
+| Prop               | Type     | Default | Description                                                                                                |
+|--------------------|----------|---------|------------------------------------------------------------------------------------------------------------|
+| `messages`         | `Array`  | `[]`    | An array of message objects to display. See "Message Object Structure" below for details.                  |
+| `onSendMessage`    | `Function` |         | Callback function triggered when a new message is submitted from the input. Receives the message text (string) as an argument. |
+| `inputPlaceholder` | `String` |         | Placeholder text for the message input field.                                                              |
+| `isLoading`        | `Boolean`| `false` | If `true`, displays a "Thinking..." indicator below messages and disables the chat input.                |
+
+### `ChatInput`
+
+(Note: `ChatInput` is used internally by `ChatWindow` but can also be used standalone if needed, though it's primarily designed for integration within `ChatWindow`.)
+
+The `ChatInput` component provides the text input field and send button.
+
+| Prop              | Type     | Default              | Description                                                                                                                     |
+|-------------------|----------|----------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| `onSendMessage`   | `Function` |                      | Callback function triggered when the send button is clicked or the form is submitted. Receives the input value (string) as an argument. |
+| `placeholder`     | `String` | `"Type a message..."` | Placeholder text for the input field.                                                                                           |
+| `disabled`        | `Boolean`| `false`              | If `true`, disables the input field and send button. The send button will also show a spinner.                                    |
 
 ### Message Object Structure
 
@@ -55,7 +83,6 @@ interface Message {
   content: MessageContentPart[]; // Array of content parts
   timestamp?: number; // Optional: UNIX timestamp (in seconds) of when the message was sent/received
 }
-```
 ```
 
 ## Examples
@@ -87,17 +114,17 @@ components without installing the package from npm.
 - ✅ **Core `ChatWindow` Features:**
   - ✅ Add `isLoading` prop for` loading states.
   - ✅ Add `inputPlaceholder` prop for the message input.
-  - ✅ Implement auto-scrolling to the latest message.
-- [ ] **Message Enhancements:**
-  - [x] Add support for displaying message timestamps.
-- [ ] **Documentation:**
-  - [ ] Expand `README.md` with detailed API for all components/props.
-  - [ ] Add JSDoc comments to components.
-- [ ] **Examples:**
-  - [ ] Update `example/basic` to showcase new input component and features.
-- [ ] **Testing:**
-  - [ ] Add unit tests for `ChatInput.jsx`.
-  - [ ] Ensure existing tests cover new functionalities.
+  - ✅ Implem`ent auto-scrolling to the latest message.
+- ✅ **Message Enhancements:**
+  - ✅ Add support for displaying message timestamps.
+- ✅ **Documentation:**
+  - ✅ Expand `README.md` with detailed API for all components/props.
+  - ✅ Add JSDoc comments to components.
+- ✅ **Examples:**
+  - ✅ Update `example/basic` to showcase new input component and features.
+- ✅ **Testing:**
+  - ✅ Add unit tests for `ChatInput.jsx`.
+  - ✅ Ensure existing tests cover new functionalities.
 
 ## Styling & Customization
 
