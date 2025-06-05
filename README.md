@@ -36,6 +36,26 @@ const messages = [
 function App() {
   return <ChatWindow messages={messages} />;
 }
+
+### Message Object Structure
+
+Each message object in the `messages` array should conform to the following structure:
+
+```typescript
+interface MessageContentPart {
+  type: 'text'; // Currently only 'text' is supported
+  text: string;
+  annotations?: any[]; // Optional, for future use or custom rendering
+}
+
+interface Message {
+  id: string; // Unique identifier for the message
+  type: 'message'; // Type of the item, currently 'message'
+  role: 'user' | 'assistant'; // Role of the sender
+  content: MessageContentPart[]; // Array of content parts
+  timestamp?: number; // Optional: UNIX timestamp (in seconds) of when the message was sent/received
+}
+```
 ```
 
 ## Examples
@@ -69,7 +89,7 @@ components without installing the package from npm.
   - ✅ Add `inputPlaceholder` prop for the message input.
   - ✅ Implement auto-scrolling to the latest message.
 - [ ] **Message Enhancements:**
-  - [ ] Add support for displaying message timestamps.
+  - [x] Add support for displaying message timestamps.
 - [ ] **Documentation:**
   - [ ] Expand `README.md` with detailed API for all components/props.
   - [ ] Add JSDoc comments to components.
@@ -131,6 +151,8 @@ For more straightforward theming of common elements, the library exposes several
 *   `--rc-assistant-message-text-color`: Text color for assistant messages.
 *   `--rc-send-button-disabled-bg-color`: Background color for the send button when disabled.
 *   `--rc-input-disabled-bg-color`: Background color for the input field when disabled.
+*   `--rc-timestamp-font-size`: Font size for the message timestamp (default: `0.75em`).
+*   `--rc-timestamp-text-color`: Text color for the message timestamp (default: `#6c757d`).
 
 **Example of overriding custom properties:**
 

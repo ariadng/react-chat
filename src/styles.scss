@@ -115,46 +115,87 @@
 }
 
 .rc-chat-message {
-  padding: 0.75rem 1rem; /* Increased padding for better spacing */
-  border-radius: 0.75rem; /* Softer, more rounded corners */
-  max-width: 80%; /* Prevent messages from taking full width */
-  word-wrap: break-word; /* Ensure long words break */
+  display: flex;
+  flex-direction: column;
+  max-width: 80%; /* Prevent messages from taking full width, applies to the group */
+  gap: 0.25rem; /* Gap between bubbles and timestamp if multiple */
+  // align-self is handled by role-specific classes below
+}
+
+.rc-message-bubble {
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  word-wrap: break-word;
+  // max-width: 100%; /* Bubbles can take full width of parent .rc-chat-message */
+  // No align-self here, parent .rc-chat-message (role-specific) handles alignment of children
 }
 
 .rc-chat-message.rc-role-user {
-  background-color: var(--rc-user-message-bg-color, #0078FF);
-  color: var(--rc-user-message-text-color, #ffffff);
   align-self: flex-end;
-  margin-left: auto; /* Ensures it aligns to the right within the flex container */
+  margin-left: auto;
+  align-items: flex-end; /* Aligns bubbles and timestamp to the right within the column */
+  .rc-message-bubble {
+    background-color: var(--rc-user-message-bg-color, #0078FF);
+    color: var(--rc-user-message-text-color, #ffffff);
+  }
 }
 
 .rc-chat-message.rc-role-assistant {
-  background-color: var(--rc-assistant-message-bg-color, #E9E9EB);
-  color: var(--rc-assistant-message-text-color, #272727);
   align-self: flex-start;
-  margin-right: auto; /* Ensures it aligns to the left */
+  margin-right: auto;
+  align-items: flex-start; /* Aligns bubbles and timestamp to the left within the column */
+  .rc-message-bubble {
+    background-color: var(--rc-assistant-message-bg-color, #E9E9EB);
+    color: var(--rc-assistant-message-text-color, #272727);
+  }
 }
 
-.rc-thinking-indicator {
-  background-color: transparent !important; // Override bubble style
-  color: var(--rc-assistant-message-text-color, #272727) !important; // Use assistant text color or a specific thinking color
-  padding: 0.75rem 0 !important; // Adjust padding, remove horizontal for plain text feel if desired
-  box-shadow: none !important; // Remove shadow
-  border: none !important; // Remove border if any from base .rc-chat-message
+.rc-thinking-indicator { // This is a direct child of messages-area, but styled like a message item
+  // It's already a .rc-chat-message.rc-role-assistant, so it gets display:flex, flex-direction:column, align-items:flex-start
+  // We need to override bubble-like properties it might inherit if we put them on .rc-chat-message directly
+  // The current structure where .rc-thinking-indicator is a .rc-chat-message is fine.
+  // We just ensure its *content* (the text and spinner) doesn't look like a bubble.
+  
+  // Remove bubble look from the .rc-thinking-indicator itself if it were to get bubble styles from .rc-chat-message
+  &.rc-chat-message { // More specific to override general .rc-chat-message bubble styles if they were there
+    background-color: transparent !important;
+    padding: 0.75rem 0 !important; // Keep its specific padding
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  // Inner content styling for thinking text and spinner
   font-weight: 500;
-  opacity: 0.6; // Half opacity (adjust as needed)
-  display: flex; // To align spinner and text
-  align-items: center; // Vertically align spinner and text
-  // It inherits align-self: flex-start and margin-right: auto from .rc-role-assistant
+  opacity: 0.6;
+  // display: flex; // Already on .rc-chat-message
+  // align-items: center; // Already on .rc-chat-message
+  // The text and spinner are now direct children of .rc-thinking-indicator which is a flex column.
+  // We need to make the spinner and text sit on one line again.
+  // Let's wrap them in a div to make them a single flex item for the column, or adjust display.
+  // For simplicity, let's assume the current JSX for thinking indicator is <div class="rc-thinking-indicator"><span class="spinner"></span> Thinking...</div>
+  // The parent .rc-chat-message.rc-thinking-indicator is display:flex, flex-direction:column. This is not ideal for spinner + text on one line.
+  // Let's adjust .rc-thinking-indicator to be display: flex, flex-direction: row for its *own* content (spinner + text)
+  flex-direction: row !important; // Override the column from .rc-chat-message
+  align-items: center !important; // Override from .rc-chat-message
 
   .rc-spinner {
-    border-top-color: var(--rc-assistant-message-text-color, #272727); // Match assistant text color
-    border-left-color: var(--rc-assistant-message-text-color, #272727); // Make it a bit more visible if only top is colored
+    border-top-color: var(--rc-assistant-message-text-color, #272727);
+    border-left-color: var(--rc-assistant-message-text-color, #272727);
     border-bottom-color: var(--rc-assistant-message-text-color, #272727);
-    border-right-color: transparent; // Common spinner style
+    border-right-color: transparent;
     width: 0.9em;
     height: 0.9em;
-    margin-right: 0.5em; // Space between spinner and text
+    margin-right: 0.5em;
   }
+}
+
+.rc-message-timestamp {
+  padding: 0 0.5rem;
+  font-size: var(--rc-timestamp-font-size, 0.75em);
+  color: var(--rc-timestamp-text-color, #6c757d);
+  // margin-top is handled by gap in .rc-chat-message or can be added if specific spacing is needed
+  // text-align is not needed here as align-items on parent .rc-chat-message handles it.
+  // If specific text alignment within the timestamp div is needed (e.g. if it spans width), it can be added.
+  // For now, it will align with the bubbles due to parent's align-items.
 }
 
