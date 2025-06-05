@@ -2,6 +2,7 @@
 
 .rc-chat-input-form {
   display: flex;
+  align-items: center; // Align items vertically for loading indicator
   padding: 0.5rem;
   border-top: 1px solid var(--rc-input-form-border-color, #e5e7eb);
   background-color: var(--rc-input-form-bg-color, #ffffff);
@@ -51,6 +52,50 @@
   transition-duration: 0s;
 }
 
+@keyframes rc-spinner-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.rc-spinner {
+  display: inline-block;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--rc-send-button-text-color, white);
+  width: 1em;
+  height: 1em;
+  animation: rc-spinner-spin 0.8s linear infinite;
+  vertical-align: middle;
+}
+
+.rc-chat-send-button.rc-loading {
+  background-color: var(--rc-send-button-loading-bg-color, var(--rc-send-button-hover-bg-color, #006de8)); // Use hover or a specific loading color
+  cursor: wait;
+
+  .rc-spinner {
+    position: relative;
+    top: -2px;
+  }
+}
+
+.rc-chat-send-button:disabled:not(.rc-loading) { // Styles for when truly disabled, not just loading
+  background-color: var(--rc-send-button-disabled-bg-color, #cccccc);
+  cursor: not-allowed;
+  .rc-spinner {
+    border-top-color: var(--rc-send-button-text-color, #666666); // Darker spinner on disabled bg
+  }
+}
+
+.rc-chat-input:disabled {
+  background-color: var(--rc-input-disabled-bg-color, #f0f0f0);
+  cursor: not-allowed;
+}
+
+.rc-chat-input:disabled {
+  background-color: var(--rc-input-disabled-bg-color, #f0f0f0);
+  cursor: not-allowed;
+}
+
 
 .rc-chat-window-container {
   display: flex;
@@ -88,5 +133,28 @@
   color: var(--rc-assistant-message-text-color, #272727);
   align-self: flex-start;
   margin-right: auto; /* Ensures it aligns to the left */
+}
+
+.rc-thinking-indicator {
+  background-color: transparent !important; // Override bubble style
+  color: var(--rc-assistant-message-text-color, #272727) !important; // Use assistant text color or a specific thinking color
+  padding: 0.75rem 0 !important; // Adjust padding, remove horizontal for plain text feel if desired
+  box-shadow: none !important; // Remove shadow
+  border: none !important; // Remove border if any from base .rc-chat-message
+  font-weight: 500;
+  opacity: 0.6; // Half opacity (adjust as needed)
+  display: flex; // To align spinner and text
+  align-items: center; // Vertically align spinner and text
+  // It inherits align-self: flex-start and margin-right: auto from .rc-role-assistant
+
+  .rc-spinner {
+    border-top-color: var(--rc-assistant-message-text-color, #272727); // Match assistant text color
+    border-left-color: var(--rc-assistant-message-text-color, #272727); // Make it a bit more visible if only top is colored
+    border-bottom-color: var(--rc-assistant-message-text-color, #272727);
+    border-right-color: transparent; // Common spinner style
+    width: 0.9em;
+    height: 0.9em;
+    margin-right: 0.5em; // Space between spinner and text
+  }
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function ChatInput({ onSendMessage, placeholder = "Type a message..." }) {
+export default function ChatInput({ onSendMessage, placeholder = "Type a message...", disabled = false }) {
   const [inputValue, setInputValue] = useState('');
 
   const handleSubmit = (e) => {
@@ -20,12 +20,14 @@ export default function ChatInput({ onSendMessage, placeholder = "Type a message
       <input
         type="text"
         className="rc-chat-input"
+        disabled={disabled}
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         placeholder={placeholder}
+        aria-busy={disabled}
       />
-      <button type="submit" className="rc-chat-send-button">
-        Send
+      <button type="submit" className={`rc-chat-send-button ${disabled ? 'rc-loading' : ''}`} disabled={disabled}>
+        {disabled ? <span className="rc-spinner"></span> : 'Send'}
       </button>
     </form>
   );

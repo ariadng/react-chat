@@ -31,6 +31,7 @@ const initialMessages = [
 
 function App() {
   const [messages, setMessages] = useState(initialMessages);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSendMessage = (text) => {
     const newUserMessage = {
@@ -40,6 +41,7 @@ function App() {
       content: [{ type: 'text', text, annotations: [] }],
     };
     setMessages((prevMessages) => [...prevMessages, newUserMessage]);
+    setIsLoading(true);
 
     // Simulate assistant response
     setTimeout(() => {
@@ -50,7 +52,8 @@ function App() {
         content: [{ type: 'text', text: `I received: "${text}"`, annotations: [] }],
       };
       setMessages((prevMessages) => [...prevMessages, assistantResponse]);
-    }, 1000);
+      setIsLoading(false);
+    }, 1500); // Increased delay to better see loading state
   };
 
   return (
@@ -61,6 +64,7 @@ function App() {
           messages={messages} 
           onSendMessage={handleSendMessage} 
           inputPlaceholder="Type your message here..."
+          isLoading={isLoading}
         />
       </div>
     </div>

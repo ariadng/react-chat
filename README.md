@@ -64,10 +64,10 @@ components without installing the package from npm.
 - ✅ **Styling & Customization:**
   - ✅ Refine default styles for a modern look and feel.
   - ✅ Document methods for style `customization (CSS variables/overrides).
-- [ ] **Core `ChatWindow` Features:**
-  - [ ] Add `isLoading` prop for loading states.
-  - [ ] Add `placeholder` prop for the message input.
-  - [ ] Implement auto-scrolling to the latest message.
+- ✅ **Core `ChatWindow` Features:**
+  - ✅ Add `isLoading` prop for` loading states.
+  - ✅ Add `inputPlaceholder` prop for the message input.
+  - ✅ Implement auto-scrolling to the latest message.
 - [ ] **Message Enhancements:**
   - [ ] Add support for displaying message timestamps.
 - [ ] **Documentation:**
@@ -122,12 +122,15 @@ For more straightforward theming of common elements, the library exposes several
 *   `--rc-send-button-text-color`: Text color of the send button.
 *   `--rc-send-button-border-radius`: Border radius of the send button.
 *   `--rc-send-button-hover-bg-color`: Background color of the send button on hover.
+*   `--rc-send-button-loading-bg-color`: Background color of the send button when in loading state (spinner active).
 *   `--rc-messages-area-bg-color`: Background color of the messages area.
 *   `--rc-messages-gap`: Gap between messages in the messages area.
 *   `--rc-user-message-bg-color`: Background color for user messages.
 *   `--rc-user-message-text-color`: Text color for user messages.
 *   `--rc-assistant-message-bg-color`: Background color for assistant messages.
 *   `--rc-assistant-message-text-color`: Text color for assistant messages.
+*   `--rc-send-button-disabled-bg-color`: Background color for the send button when disabled.
+*   `--rc-input-disabled-bg-color`: Background color for the input field when disabled.
 
 **Example of overriding custom properties:**
 
