@@ -21,7 +21,7 @@ Object.defineProperty(exports, "ChatWindow", {
     return _ChatWindow["default"];
   }
 });
-var _ChatMessage = _interopRequireDefault(require("./ChatMessage.jsx"));
-var _ChatWindow = _interopRequireDefault(require("./ChatWindow.jsx"));
-var _ChatInput = _interopRequireDefault(require("./ChatInput.jsx"));
+var _ChatMessage = _interopRequireDefault(require("./ChatMessage"));
+var _ChatWindow = _interopRequireDefault(require("./ChatWindow"));
+var _ChatInput = _interopRequireDefault(require("./ChatInput"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
