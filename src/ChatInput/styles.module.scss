@@ -1,0 +1,81 @@
+.ChatInputForm {
+	display: flex;
+	align-items: center;
+	padding: 0.5rem;
+	border-top: 1px solid var(--rc-input-form-border-color, #e5e7eb);
+	background-color: var(--rc-input-form-bg-color, #ffffff);
+} // .ChatInputForm
+
+input.ChatInput {
+	flex-grow: 1;
+	height: var(--rc-input-height, 3rem);
+	padding: var(--rc-input-padding, 0.5rem 1rem);
+	border: 1px solid var(--rc-input-border-color, #d1d5db);
+	border-radius: var(--rc-input-border-radius, 1.5rem);
+	margin-right: var(--rc-input-margin-right, 0.5rem);
+	font-size: var(--rc-input-font-size, 1rem);
+	color: var(--rc-input-text-color, #1f2937);
+	background-color: var(--rc-input-bg-color, #ffffff);
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+	// Placeholder text
+	&::placeholder {
+		color: var(--rc-input-placeholder-color, #9ca3af);
+	}
+
+	// Focus state
+	&:focus {
+		outline: none;
+		border-color: var(--rc-input-focus-border-color, #2563eb);
+		box-shadow: 0 0 0 0.2rem var(--rc-input-focus-shadow-color, rgba(59, 130, 246, 0.25));
+	}
+
+	// Disabled state
+	&:disabled {
+		background-color: var(--rc-input-disabled-bg-color, #f0f0f0);
+		cursor: not-allowed;
+	}
+} // .ChatInput
+
+button.SendButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: var(--rc-send-button-height, 3rem);
+	padding: var(--rc-send-button-padding, 0.5rem 1.5rem);
+	background-color: var(--rc-send-button-bg-color, #0078FF);
+	color: var(--rc-send-button-text-color, white);
+	border: none;
+	border-radius: var(--rc-send-button-border-radius, 1.5rem);
+	cursor: pointer;
+	font-weight: 500;
+	transition: background-color 0.15s ease-in-out;
+
+	// Hover state
+	&:hover {
+		background-color: var(--rc-send-button-hover-bg-color, #006de8);
+	}
+
+	// Active state
+	&:active {
+		opacity: 0.9;
+		transition-duration: 0s;
+	}
+
+	// Loading state
+	&.rc-loading {
+		background-color: var(--rc-send-button-loading-bg-color, var(--rc-send-button-hover-bg-color, #006de8)); // Use hover or a specific loading color
+		cursor: wait;
+
+		.rc-spinner {
+			position: relative;
+			top: -2px;
+		}
+	}
+
+	// Disabled state
+	&:disabled {
+		background-color: var(--rc-send-button-disabled-bg-color, #eee);
+		cursor: not-allowed;
+	}
+} // .SendButton

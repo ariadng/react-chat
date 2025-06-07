@@ -22,7 +22,7 @@
  * @param {boolean} [props.isLoading=false] - If true, displays a loading indicator and disables input.
  * @returns {JSX.Element}
  */
-export default function ChatWindow({ messages, onSendMessage, inputPlaceholder, isLoading }: {
+export function ChatWindow({ messages, onSendMessage, inputPlaceholder, isLoading }: {
     messages?: Message[];
     onSendMessage?: Function;
     inputPlaceholder?: string;

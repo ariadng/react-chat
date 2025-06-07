@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { ChatWindow } from '../../../src'; // Adjust path if your project structure is different
+import { ChatWindow } from '../../../dist'; // Using the built files from dist
 
 const initialMessages = [
   {
@@ -106,6 +106,7 @@ function App() {
 
   return (
     <div style={{ height: '100vh', display: 'flex', flexDirection: 'column', padding: '20px', boxSizing: 'border-box' }}>
+      <h1>Basic Example</h1>
       <div style={{ flexGrow: 1, border: '1px solid #ddd', borderRadius: '8px', overflow: 'hidden' }}>
         <ChatWindow 
           messages={messages} 

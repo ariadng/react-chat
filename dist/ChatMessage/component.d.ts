@@ -10,10 +10,10 @@
  *                                          If a string is provided, it's treated as assistant's text content.
  * @returns {JSX.Element}
  */
-export default function ChatMessage({ message }: {
+export function ChatMessage({ message }: {
     message: Message | string;
 }): JSX.Element;
 /**
  * - Imports Message type from ChatWindow JSDoc.
  */
-export type Message = import("./ChatWindow").Message;
+export type Message = any;

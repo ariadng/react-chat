@@ -7,7 +7,7 @@
  * @param {boolean} [props.disabled=false] - If true, disables the input and send button, and shows a spinner on the button.
  * @returns {JSX.Element}
  */
-export default function ChatInput({ onSendMessage, placeholder, disabled }: {
+export function ChatInput({ onSendMessage, placeholder, disabled }: {
     onSendMessage?: Function;
     placeholder?: string;
     disabled?: boolean;

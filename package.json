@@ -1,6 +1,6 @@
 {
   "name": "@ariadng/react-chat",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A lightweight and fully customizable chat UI library for React.",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -14,7 +14,7 @@
     "test": "jest",
     "clean": "rimraf dist",
     "build:js": "babel src --out-dir dist --copy-files --ignore \"src/**/*.test.js,src/**/*.test.jsx\"",
-    "build:css": "sass src/styles.scss dist/styles.css --style compressed",
+    "build:css": "echo 'CSS modules are now handled by the build:js step'",
     "build:types": "tsc --project tsconfig.json",
     "build": "npm run clean && npm run build:js && npm run build:css && npm run build:types"
   },
@@ -36,5 +36,8 @@
     "rimraf": "^6.0.1",
     "sass": "^1.89.1",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "classnames": "^2.5.1"
   }
 }

@@ -1,0 +1,37 @@
+.ChatMessage {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    gap: 0.25rem;
+
+    &.role_assistant {
+        align-self: flex-start;
+        margin-right: auto;
+        align-items: flex-start;
+        --rc-message-bubble-bg-color: #E9E9EB;
+        --rc-message-bubble-text-color: #272727;
+    }
+
+    &.role_user {
+        align-self: flex-end;
+        margin-left: auto;
+        align-items: flex-end;
+        --rc-message-bubble-bg-color: #0078FF;
+        --rc-message-bubble-text-color: #ffffff;
+    }
+
+} // .ChatMessage
+
+.MessageBubble {
+    padding: 0.75rem 1rem !important;
+    border-radius: 0.75rem;
+    word-wrap: break-word;
+    background-color: var(--rc-message-bubble-bg-color, #E9E9EB);
+    color: var(--rc-message-bubble-text-color, #272727);
+} // .MessageBubble
+
+.Timestamp {
+    padding: 0 0.5rem !important;
+    font-size: var(--rc-timestamp-font-size, 0.75em);
+    color: var(--rc-timestamp-text-color, #6c757d);
+} // .Timestamp
