@@ -183,7 +183,7 @@
 		flex-grow: 1;
 		overflow-y: auto;
 		padding: 1rem;
-		background-color: var(--rc-messages-area-bg-color, #f7f7f7);
+		background-color: var(--rc-chat-background-color, #f7f7f7);
 		display: flex;
 		flex-direction: column;
 		gap: var(--rc-messages-gap, 1rem);
@@ -195,5 +195,5 @@
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
-	color: rgba(0, 0, 0, 0.5);
+	color: var(--rc-assistant-text-color, rgba(0, 0, 0, 0.5));
 }

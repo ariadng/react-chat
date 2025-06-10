@@ -22,6 +22,22 @@ import { Spinner } from '../Spinner/index';
  */
 
 /**
+ * @typedef {Object} ThemeColors
+ * @property {string} [primary] - Primary color for accents.
+ * @property {string} [assistantBubble] - Background color for assistant messages.
+ * @property {string} [assistantText] - Text color for assistant messages.
+ * @property {string} [userBubble] - Background color for user messages.
+ * @property {string} [userText] - Text color for user messages.
+ * @property {string} [chatBackground] - Background color for the chat window area.
+ * @property {string} [inputBackground] - Background color for the text input field.
+ * @property {string} [inputText] - Text color for the input field.
+ * @property {string} [buttonBackground] - Background color for the send button.
+ * @property {string} [buttonText] - Text color for the send button.
+ * @property {string} [headerBackground] - Background color for the chat header (if any).
+ * @property {string} [headerText] - Text color for the chat header (if any).
+ */
+
+/**
  * ChatWindow component displays a list of messages and an input field for sending new messages.
  *
  * @param {Object} props - The component's props.
@@ -29,6 +45,7 @@ import { Spinner } from '../Spinner/index';
  * @param {Function} [props.onSendMessage] - Callback function triggered when a new message is submitted. Receives the message text (string).
  * @param {string} [props.inputPlaceholder] - Placeholder text for the message input field.
  * @param {boolean} [props.isLoading=false] - If true, displays a loading indicator and disables input.
+ * @param {ThemeColors} [props.theme={}] - Optional theme object for customizing colors.
  * @returns {JSX.Element}
  */
 export function ChatWindow(_ref) {
@@ -37,15 +54,31 @@ export function ChatWindow(_ref) {
     onSendMessage = _ref.onSendMessage,
     inputPlaceholder = _ref.inputPlaceholder,
     _ref$isLoading = _ref.isLoading,
-    isLoading = _ref$isLoading === void 0 ? false : _ref$isLoading;
+    isLoading = _ref$isLoading === void 0 ? false : _ref$isLoading,
+    _ref$theme = _ref.theme,
+    theme = _ref$theme === void 0 ? {} : _ref$theme;
   var messagesAreaRef = useRef(null);
   useEffect(function () {
     if (messagesAreaRef.current) {
       messagesAreaRef.current.scrollTop = messagesAreaRef.current.scrollHeight;
     }
   }, [messages]);
+  var chatWindowStyle = {};
+  if (theme.primary) chatWindowStyle['--rc-primary-color'] = theme.primary;
+  if (theme.assistantBubble) chatWindowStyle['--rc-assistant-bubble-color'] = theme.assistantBubble;
+  if (theme.assistantText) chatWindowStyle['--rc-assistant-text-color'] = theme.assistantText;
+  if (theme.userBubble) chatWindowStyle['--rc-user-bubble-color'] = theme.userBubble;
+  if (theme.userText) chatWindowStyle['--rc-user-text-color'] = theme.userText;
+  if (theme.chatBackground) chatWindowStyle['--rc-chat-background-color'] = theme.chatBackground;
+  if (theme.inputBackground) chatWindowStyle['--rc-input-background-color'] = theme.inputBackground;
+  if (theme.inputText) chatWindowStyle['--rc-input-text-color'] = theme.inputText;
+  if (theme.buttonBackground) chatWindowStyle['--rc-button-background-color'] = theme.buttonBackground;
+  if (theme.buttonText) chatWindowStyle['--rc-button-text-color'] = theme.buttonText;
+  if (theme.headerBackground) chatWindowStyle['--rc-header-background-color'] = theme.headerBackground;
+  if (theme.headerText) chatWindowStyle['--rc-header-text-color'] = theme.headerText;
   return /*#__PURE__*/React.createElement("div", {
-    className: classNames(styles.Reset, styles.ChatWindowContainer)
+    className: classNames(styles.Reset, styles.ChatWindowContainer),
+    style: chatWindowStyle
   }, /*#__PURE__*/React.createElement("div", {
     className: styles.ChatWindow
   }, /*#__PURE__*/React.createElement("div", {

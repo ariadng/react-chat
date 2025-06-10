@@ -3,7 +3,7 @@
 	align-items: center;
 	padding: 0.5rem;
 	border-top: 1px solid var(--rc-input-form-border-color, #e5e7eb);
-	background-color: var(--rc-input-form-bg-color, #ffffff);
+	background-color: var(--rc-input-form-bg-color, var(--rc-chat-background-color, #ffffff));
 } // .ChatInputForm
 
 input.ChatInput {
@@ -15,7 +15,7 @@ input.ChatInput {
 	margin-right: var(--rc-input-margin-right, 0.5rem);
 	font-size: var(--rc-input-font-size, 1rem);
 	color: var(--rc-input-text-color, #1f2937);
-	background-color: var(--rc-input-bg-color, #ffffff);
+	background-color: var(--rc-input-bg-color, var(--rc-input-background-color, #ffffff));
 	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
 	// Placeholder text
@@ -26,7 +26,7 @@ input.ChatInput {
 	// Focus state
 	&:focus {
 		outline: none;
-		border-color: var(--rc-input-focus-border-color, #2563eb);
+		border-color: var(--rc-input-focus-border-color, var(--rc-primary-color, #2563eb));
 		box-shadow: 0 0 0 0.2rem var(--rc-input-focus-shadow-color, rgba(59, 130, 246, 0.25));
 	}
 
@@ -43,8 +43,8 @@ button.SendButton {
 	justify-content: center;
 	height: var(--rc-send-button-height, 3rem);
 	padding: var(--rc-send-button-padding, 0.5rem 1.5rem);
-	background-color: var(--rc-send-button-bg-color, #0078FF);
-	color: var(--rc-send-button-text-color, white);
+	background-color: var(--rc-send-button-bg-color, var(--rc-button-background-color, #0078FF));
+	color: var(--rc-send-button-text-color, var(--rc-button-text-color, white));
 	border: none;
 	border-radius: var(--rc-send-button-border-radius, 1.5rem);
 	cursor: pointer;
@@ -53,7 +53,7 @@ button.SendButton {
 
 	// Hover state
 	&:hover {
-		background-color: var(--rc-send-button-hover-bg-color, #006de8);
+		background-color: var(--rc-send-button-hover-bg-color, var(--rc-primary-color, #006de8));
 	}
 
 	// Active state

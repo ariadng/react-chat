@@ -79,6 +79,19 @@ function App() {
   const [messages, setMessages] = useState(initialMessages);
   const [isLoading, setIsLoading] = useState(false);
 
+  const customTheme = {
+    primary: '#007bff',
+    assistantBubble: '#f0f0f0',
+    assistantText: '#333',
+    userBubble: '#007bff',
+    userText: '#fff',
+    chatBackground: '#f9f9f9',
+    inputBackground: '#fff',
+    inputText: '#212529',
+    buttonBackground: '#007bff',
+    buttonText: '#fff',
+  };
+
   const handleSendMessage = (text) => {
     const newUserMessage = {
       id: String(Date.now()), // Using timestamp for a simple unique ID
@@ -113,6 +126,7 @@ function App() {
           onSendMessage={handleSendMessage} 
           inputPlaceholder="Type your message here..."
           isLoading={isLoading}
+          theme={customTheme}
         />
       </div>
     </div>

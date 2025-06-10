@@ -129,9 +129,55 @@ components without installing the package from npm.
 
 ## Styling & Customization
 
-There are two main ways to customize the appearance of the chat components:
+There are a few ways to customize the appearance of the chat components:
 
-### 1. Overriding CSS Classes
+### 1. Using the `theme` Prop (Recommended for Colors)
+
+The `ChatWindow` component accepts a `theme` prop, which allows you to easily customize the core color scheme of the chat interface. This is the recommended approach for most color-related theming needs as it sets multiple underlying CSS custom properties for you.
+
+Pass an object to the `theme` prop with any of the following keys:
+
+```typescript
+interface ThemeColors {
+  primary?: string;          // Primary accent color (e.g., for spinner, button hover effects)
+  assistantBubble?: string;  // Background color for assistant messages
+  assistantText?: string;    // Text color for assistant messages
+  userBubble?: string;       // Background color for user messages
+  userText?: string;         // Text color for user messages
+  chatBackground?: string;   // Background color for the main chat area
+  inputBackground?: string;  // Background color for the text input field
+  inputText?: string;        // Text color for the input field and timestamps
+  buttonBackground?: string; // Background color for the send button
+  buttonText?: string;       // Text color for the send button
+  headerBackground?: string; // Background color for a potential future header
+  headerText?: string;       // Text color for a potential future header
+}
+```
+
+**Example:**
+
+```jsx
+import { ChatWindow } from '@ariadng/react-chat';
+
+const myTheme = {
+  primary: '#ff69b4', // Hot pink
+  userBubble: '#ff69b4',
+  userText: '#ffffff',
+  assistantBubble: '#f0f8ff', // Alice blue
+  assistantText: '#333333',
+  chatBackground: '#fafafa',
+  buttonBackground: '#ff69b4',
+  buttonText: '#ffffff',
+};
+
+function MyThemedChat() {
+  return <ChatWindow messages={messages} theme={myTheme} />;
+}
+```
+
+This `theme` prop sets corresponding CSS custom properties (e.g., `theme.primary` sets `--rc-primary-color`). You can still override these individual CSS custom properties if you need more fine-grained control (see section below).
+
+### 2. Overriding CSS Classes
 
 All CSS classes used by this library are prefixed with `rc-` (e.g., `.rc-chat-window-container`, `.rc-chat-message`, `.rc-chat-input`). You can target these classes in your own CSS files to override specific styles. Make sure your custom styles have enough specificity or are loaded after the library's styles.
 
@@ -145,7 +191,7 @@ All CSS classes used by this library are prefixed with `rc-` (e.g., `.rc-chat-wi
 }
 ```
 
-### 2. Using CSS Custom Properties (Variables)
+### 3. Using CSS Custom Properties (Variables) Directly
 
 For more straightforward theming of common elements, the library exposes several CSS custom properties. You can redefine these variables in your own CSS, typically within a `:root` selector or a more specific parent container.
 
@@ -173,10 +219,18 @@ For more straightforward theming of common elements, the library exposes several
 *   `--rc-send-button-loading-bg-color`: Background color of the send button when in loading state (spinner active).
 *   `--rc-messages-area-bg-color`: Background color of the messages area.
 *   `--rc-messages-gap`: Gap between messages in the messages area.
-*   `--rc-user-message-bg-color`: Background color for user messages.
-*   `--rc-user-message-text-color`: Text color for user messages.
-*   `--rc-assistant-message-bg-color`: Background color for assistant messages.
-*   `--rc-assistant-message-text-color`: Text color for assistant messages.
+*   `--rc-primary-color`: Primary accent color (set by `theme.primary`).
+*   `--rc-user-bubble-color`: Background color for user messages (set by `theme.userBubble`).
+*   `--rc-user-text-color`: Text color for user messages (set by `theme.userText`).
+*   `--rc-assistant-bubble-color`: Background color for assistant messages (set by `theme.assistantBubble`).
+*   `--rc-assistant-text-color`: Text color for assistant messages (set by `theme.assistantText`).
+*   `--rc-chat-background-color`: Background for the chat messages area (set by `theme.chatBackground`).
+*   `--rc-input-background-color`: Background for the text input field (set by `theme.inputBackground`).
+*   `--rc-input-text-color`: Text color for the input field and timestamps (set by `theme.inputText`).
+*   `--rc-button-background-color`: Background for the send button (set by `theme.buttonBackground`).
+*   `--rc-button-text-color`: Text color for the send button (set by `theme.buttonText`).
+*   `--rc-header-background-color`: Background for a potential header (set by `theme.headerBackground`).
+*   `--rc-header-text-color`: Text color for a potential header (set by `theme.headerText`).
 *   `--rc-send-button-disabled-bg-color`: Background color for the send button when disabled.
 *   `--rc-input-disabled-bg-color`: Background color for the input field when disabled.
 *   `--rc-timestamp-font-size`: Font size for the message timestamp (default: `0.75em`).
@@ -196,7 +250,7 @@ For more straightforward theming of common elements, the library exposes several
 }
 ```
 
-By using these methods, you can adapt the `react-chat-ui` components to better fit the visual style of your application.
+By using these methods, you can adapt the `@ariadng/react-chat` components to better fit the visual style of your application. Using the `theme` prop is generally the easiest way to apply a consistent color scheme.
 
 ## Development
 

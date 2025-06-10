@@ -8,16 +8,16 @@
         align-self: flex-start;
         margin-right: auto;
         align-items: flex-start;
-        --rc-message-bubble-bg-color: #E9E9EB;
-        --rc-message-bubble-text-color: #272727;
+        --rc-message-bubble-bg-color: var(--rc-assistant-bubble-color, #E9E9EB);
+        --rc-message-bubble-text-color: var(--rc-assistant-text-color, #272727);
     }
 
     &.role_user {
         align-self: flex-end;
         margin-left: auto;
         align-items: flex-end;
-        --rc-message-bubble-bg-color: #0078FF;
-        --rc-message-bubble-text-color: #ffffff;
+        --rc-message-bubble-bg-color: var(--rc-user-bubble-color, #0078FF);
+        --rc-message-bubble-text-color: var(--rc-user-text-color, #ffffff);
     }
 
 } // .ChatMessage
@@ -33,5 +33,5 @@
 .Timestamp {
     padding: 0 0.5rem !important;
     font-size: var(--rc-timestamp-font-size, 0.75em);
-    color: var(--rc-timestamp-text-color, #6c757d);
+    color: var(--rc-input-text-color, #6c757d);
 } // .Timestamp
